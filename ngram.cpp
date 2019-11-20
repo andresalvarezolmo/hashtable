@@ -34,7 +34,10 @@ float redondeo(float var)
 } 
 
 // int everything(){
-int everything(string filename){
+// int everything(string filename){
+// int everything(string filename, string n){
+int everything(string filename, string n, string k){
+
 // int everything(string filename, string n, string k, string keyword){
 
 // string filename = "a.txt";
@@ -45,13 +48,14 @@ if( ! reader ) {
     return 1;
 }
 string line;
-int items = 0;
-int ngrams = 0;
-int i = 0;
 char letter;
 
-// stringstream middle1(n); 
-// stringstream middle2(k); 
+stringstream middle1(n);
+int length = 0;
+middle1>>length;
+stringstream middle2(k); 
+int ngrams = 0;
+middle2>>ngrams;
 
 while(reader.get(letter)) {
   line += letter;
@@ -61,29 +65,29 @@ while(reader.get(letter)) {
 //   int val = line[i] + line [i+1] + line[i+2];
 //   cout << val << endl;
 int filled = 0;  
-for (int i = 0; i < line.size()-2; i++)
+for (int i = 0; (unsigned)i < line.size()-(length-1); i++)
 {
   //   int val = 0;
   //   val = line[i] + line [i+1] + line[i+2];
   //   cout << "i: " << i << " "<< line [i] << endl;
-    string inside = line.substr(i, 3);
+    string inside = line.substr(i, length);
   //   cout << inside << "," << endl;
   //   cout << "i: " << i << " i+1: "<< i+1 << " i+2: " << i+2 <<endl;
   //   cout << line.substr(i,i+2) << ","<< endl;
-    T1.insert(line.substr(i,3), 1);
+    T1.insert(line.substr(i,length), 1);
     filled++;
 }
 //   T1.printTable();
   
 //fill an array with the values of the  hashmap's nodes
   int values[T1.size()];
-  int n = sizeof(values)/sizeof(values[0]); 
+  int si = sizeof(values)/sizeof(values[0]); 
   for (int d = 0; d < T1.size(); d++)
   {
       // cout << T1.getTable()[d].getValue() << endl;        
       values [d] =  T1.getTable()[d].getValue();
   }
-  sort(values, values+n,greater<int>()); 
+  sort(values, values+si,greater<int>()); 
 
 // for (int i = 0; i < n; ++i) 
 //     cout << values[i] << endl;
@@ -91,7 +95,7 @@ for (int i = 0; i < line.size()-2; i++)
 // T1.printTable();
 
 int times = 0;
-for (int v = 0; v < n; v++)
+for (int v = 0; v < si; v++)
 {
     for (int q = 0; q < T1.size(); q++)
     {
@@ -109,13 +113,13 @@ for (int v = 0; v < n; v++)
           // cout << "Key: " <<T1.getTable()[q].getKey()<< ",with value: " << T1.getTable()[q].getValue()<<endl;
           times++;
 
-          if(times >= 10)
+          if(times >= ngrams)
             break;
         }
       while (values[v]==values[v+1])
       v++;       
     }
-  if(times >= 10)
+  if(times >= ngrams)
     break;   
 }
   // cout << "valor de filled: "<< filled << endl;
@@ -136,7 +140,8 @@ for (int v = 0; v < n; v++)
 // int main(){
 int main(int argc,char* argv[]){
 
-  everything(argv[1]);
-  // everything(argv[1], argv[1], argv[2], argv[3]);
+  // everything(argv[1]);
+  // everything(argv[1], argv[2]);
+  everything(argv[1], argv[2], argv[3]);
     
 }
