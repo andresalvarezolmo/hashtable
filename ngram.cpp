@@ -124,11 +124,6 @@ int ngram(string filename, string n, string k, string keyword)
                 percentage = percentage * (values[v]) / (filled);
                 float final = percentage;
                 cout << redondeo(final) << ":" << T1.getTable()[q].getKey() << endl;
-                // cout << "values: "<< values[v] << endl;
-                // cout << "size: "<< T1.getNum()<< endl;
-
-                // cout << "TOP "<< v + 1 <<endl;
-                // cout << "Key: " <<T1.getTable()[q].getKey()<< ",with value: " << T1.getTable()[q].getValue()<<endl;
                 times++;
 
                 if (times >= ngrams)
