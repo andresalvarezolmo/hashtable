@@ -6,7 +6,6 @@
 #include <fstream>
 #include <sstream> 
 #include <string.h> 
-// #include <algorithm>
 #include <bits/stdc++.h> 
 
 #include "HashTable.h"
@@ -32,11 +31,6 @@ float redondeo(float var)
   float value = (int)(var * 100 + .5); 
   return (float)value / 100; 
 } 
-
-// int everything(){
-// int everything(string filename){
-// int everything(string filename, string n){
-// int everything(string filename, string n, string k){
 
 int ngram(string filename, string n, string k, string keyword){
 
@@ -77,29 +71,11 @@ while(reader.get(letter)) {
   line += letter;
 }
 
-//   cout << line[i] << line [i+1] << line[i+2] << endl;
-//   int val = line[i] + line [i+1] + line[i+2];
-//   cout << val << endl;
+  
 int filled = 0;
 
 if (keyword == "word")
-{
-  //  // Used to split string around spaces. 
-  //   istringstream ss(line); 
-  
-  //   // Traverse through all words 
-  //   do { 
-  //       // Read a word 
-  //       string word; 
-  //       ss >> word; 
-  
-  //       // Print the read word 
-  //       T1.insert(word, 1);
-  //       filled++;
-  
-  //       // While there is more to read 
-  //   } while (ss); 
-// }     
+{   
   string w = "";
   int counter = 0;
   for (int i = 0; (unsigned)i < line.size(); i++) 
@@ -123,8 +99,6 @@ if (keyword == "word")
       w = w + line[i]; 
     } 
   }  
-  // T1.insert(w, 1);
-  // filled++;
 } 
     
 else if (keyword == "char" || keyword == "decimal")
@@ -142,21 +116,6 @@ else
   return 1;
 }
 
-//ESTE ES EL GENERICO, ARRIBA ESTAN LOS ESPECIALIZADOS PARA EL KEYWORD
-// for (int i = 0; (unsigned)i < line.size()-(length-1); i++)
-// {
-//   //   int val = 0;
-//   //   val = line[i] + line [i+1] + line[i+2];
-//   //   cout << "i: " << i << " "<< line [i] << endl;
-//     string inside = line.substr(i, length);
-//   //   cout << inside << "," << endl;
-//   //   cout << "i: " << i << " i+1: "<< i+1 << " i+2: " << i+2 <<endl;
-//   //   cout << line.substr(i,i+2) << ","<< endl;
-//     T1.insert(line.substr(i,length), 1);
-//     filled++;
-// }
-
-//   T1.printTable();
   
 //fill an array with the values of the  hashmap's nodes
   vector<int> values(T1.size());
@@ -166,12 +125,8 @@ else
       // cout << T1.getTable()[d].getValue() << endl;        
       values[d] = T1.getTable()[d].getValue();
   }
-  sort(values.begin(), values.end(),greater<int>());
+sort(values.begin(), values.end(),greater<int>());
 
-// for (int i = 0; i < si; ++i) 
-//     cout << values[i] << endl;
-
-// T1.printTable();
 
 //PRINTING THE DETAILS
 int times = 0;
@@ -202,16 +157,6 @@ for (int v = 0; v < si; v++)
   if(times >= ngrams)
     break;   
 }
-  // cout << "valor de filled: "<< filled << endl;
-
-    // cout << "Value of the vector at 0: "<< values [0] << endl
-    // cout << "Value of the key with value 0: "<< T1.getTable()[q].getKey() << endl
-
-    
-    // for (int q = 0; q < T1.size(); q++){
-
-    //   cout << "Value " << q << " : " <<T1.getTable()[q].getValue() << endl;     
-    // }
       
     reader.close();
     return 0;
@@ -230,9 +175,5 @@ int main(int argc,char* argv[]){
     cout << "Please enter 4 parameters: a path to a file.txt, int, int, 'word or 'decimal' or 'char'" << endl;
     return 1;
   }
-  
-  // everything(argv[1]);
-  // everything(argv[1], argv[2]);
-  // everything(argv[1], argv[2], argv[3]);
     
 }
