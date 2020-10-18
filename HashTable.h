@@ -85,9 +85,7 @@ void HashTable<KeyType,ValueType>::insert(KeyType k,ValueType v){
   }
   nodo.assign(k,v);
   (*table)[val] = nodo;
-  // cout << "A new node has been added, Key: " << (*table)[val].getKey() << " , Value: " << (*table)[val].getValue() << endl;
   num++;  
-  // cout << "A new node has been added, Key: " << (*table)[val].getKey() << " , Value: " << (*table)[val].getValue() << endl;
   if (num >= (s/2))
   {
     rehash((s*2));
@@ -153,14 +151,6 @@ void HashTable<KeyType,ValueType>::rehash(int a) {
   }
 }
 
-// template <class KeyType, class ValueType>
-// void printTable(HashTable<KeyType,ValueType> ht){
-  // for (int i = 0; i < ht.size(); i++)
-  // {
-  //   cout << "At position: " << [i] << (*ht.table)[i].getKey() << " , Value: " << (*ht.table)[i].getValue() << endl;
-  // }
-  
-// }
 template <class KeyType, class ValueType>
 void HashTable<KeyType,ValueType>::printTable(){
   for (int i = 0; i < size(); i++)
@@ -168,10 +158,7 @@ void HashTable<KeyType,ValueType>::printTable(){
     cout << "At position: " << i << ": " << "Key: " << (*table)[i].getKey() << " , Value: " << (*table)[i].getValue() << endl;
   }
 }
-// template <class KeyType, class ValueType>
-// void HashTable<KeyType,ValueType>::hash_function(KeyType) {
-  
-// }
+
 template <>
 int HashTable<string,int>::hash_function(string s){ 
   int val = 0;
